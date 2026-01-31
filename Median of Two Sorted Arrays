@@ -1,0 +1,18 @@
+double findMedianSortedArrays(int* a, int n, int* b, int m) {
+    int total = n + m;
+    int i = 0, j = 0, k = 0;
+    int prev = 0, curr = 0;
+
+    while (k <= total / 2) {
+        prev = curr;
+        if (i < n && (j >= m || a[i] < b[j]))
+            curr = a[i++];
+        else
+            curr = b[j++];
+        k++;
+    }
+
+    if (total % 2 == 0)
+        return (prev + curr) / 2.0;
+    return curr;
+}
